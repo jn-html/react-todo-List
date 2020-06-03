@@ -9,17 +9,32 @@ import TodoList from './components/TodoList';
 // showing vs code github setup
 class App extends Component {
   state = {
-    items:[{id:1, title:"wake up"}, {id:2, title:"make breakfast"}],
+    items:[],
     id: uuid(),
     item:'',
     editItem: false
   };
   handleChange = (e) => {
-    console.log('handle change')
+    this.setState({
+      item:e.target.value
+    })
   }
-  handleSubmit = (e) => {
-    console.log('handle submit')
-  }
+  handleSubmit = e => {
+    e.preventDefault();
+    const newItem = {
+      id:this.state.id,
+      title:this.state.item
+    }
+    const updateItems = [...this.state.items, newItem];
+    this.setState({
+      items: updateItems,
+      item: "",
+      id: uuid(),
+      editItem: false
+    }, 
+    () => console.log(this.state)
+    );
+  };
   clearList = () => {
     console.log('clear list')
   }
@@ -31,6 +46,7 @@ class App extends Component {
   }
   render() {
     // console.log(this.state); 
+
     return (
         <div className="container">
           <div className="row">
