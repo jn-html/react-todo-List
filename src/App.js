@@ -49,8 +49,17 @@ class App extends Component {
     });
   }
   handleEdit = id => {
-    console.log(`handle edit ${id}`);
-
+    // console.log(`handle edit ${id}`);
+    const filteredItems = this.state.items.filter(item => item.id !== id);
+    const selectedItem = this.state.items.find(item => item.id === id);
+    // console.log(selectedItem);
+    this.setState({
+      items: filteredItems,
+      item: selectedItem.title, 
+      // ajouter pour revenir dans l'input
+      id: id,
+      editItem: true
+    });
   }
   render() {
     // console.log(this.state); 
