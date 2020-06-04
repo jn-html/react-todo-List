@@ -36,17 +36,10 @@ class App extends Component {
     );
   };
   clearList = () => {
-    // console.log('clear list');
-    this.setState({
-      items: []
-    });
+    console.log('clear list')
   }
   handleDelete = (id) => {
-    // console.log(`handle edit ${id}`);
-    const filteredItems = this.state.items.filter(item => item.id !== id);
-    this.setState({
-      items: filteredItems
-    });
+    console.log(`handle delete ${id}`);
   }
   handleEdit = id => {
     console.log(`handle edit ${id}`);
@@ -64,7 +57,7 @@ class App extends Component {
             <TodoInput item={this.state.item} handleChange={this.handleChange} 
             handleSubmit={this.handleSubmit} editItem={this.state.editItem}/>
             <TodoList items={this.state.items} clearList={this.clearList}
-              handleDelete={this.handleDelete} handleEdit={this.handleDelete}/>
+              handleDelete={this.handleDelete} handleEdit={this.handleEdit}/>
             </div>
           </div>
         </div>
